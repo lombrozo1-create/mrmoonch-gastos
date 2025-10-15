@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>MR MOONCH - Gastos</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="logo.jpeg" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <img src="logo.jpeg" alt="logo" class="logo"/>
+  <h1>MR MOONCH - Gastos</h1>
+</header>
+
+<main class="container">
+  <section class="form-card">
+    <h2>Nuevo registro</h2>
+    <form id="entryForm">
+      <label>Tipo
+        <select id="type" required>
+          <option value="expense">Gasto</option>
+          <option value="income">Ingreso</option>
+        </select>
+      </label>
+      <label>Categoría
+        <select id="category" required>
+          <option value="Renta">Renta</option>
+          <option value="Insumos">Insumos</option>
+          <option value="Luz">Luz</option>
+          <option value="Agua">Agua</option>
+          <option value="Sueldos">Sueldos</option>
+          <option value="Mantenimiento">Mantenimiento</option>
+          <option value="Otros">Otros</option>
+        </select>
+      </label>
+      <label>Monto (MXN)
+        <input type="number" id="amount" step="0.01" min="0" required>
+      </label>
+      <label>Fecha
+        <input type="date" id="date" required>
+      </label>
+      <label>Descripción
+        <input type="text" id="description" placeholder="Ej: compra de pan">
+      </label>
+      <div class="row">
+        <button type="submit" class="btn primary">Guardar</button>
+        <button type="button" id="clearAll" class="btn">Borrar todo</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="summary-card">
+    <h2>Resumen</h2>
+    <div class="filters">
+      <label>Rango
+        <select id="range">
+          <option value="day">Hoy</option>
+          <option value="week">Esta semana</option>
+          <option value="month" selected>Este mes</option>
+          <option value="all">Todo</option>
+        </select>
+      </label>
+    </div>
+    <div id="totals" class="totals"></div>
+    <canvas id="chart" width="400" height="200"></canvas>
+    <div class="controls">
+      <button id="exportCsv" class="btn">Exportar CSV</button>
+      <input type="file" id="importFile" accept=".csv" style="display:none"/>
+      <button id="importBtn" class="btn">Importar CSV</button>
+    </div>
+  </section>
+
+  <section class="list-card">
+    <h2>Registros</h2>
+    <div id="list"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <small>App PWA - MR MOONCH • Guardado local • Modo oscuro</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
